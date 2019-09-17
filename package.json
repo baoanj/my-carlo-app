@@ -1,0 +1,27 @@
+{
+  "name": "my-carlo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node example.js",
+    "pkg": "pkg . --target win"
+  },
+  "bin": {
+    "carlo-app": "./example.js"
+  },
+  "pkg": {
+    "scripts": "*.js",
+    "assets": "www/**/*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "carlo": "^0.9.46",
+    "lowdb": "^1.0.0"
+  },
+  "devDependencies": {
+    "pkg": "^4.4.0"
+  }
+}

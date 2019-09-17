@@ -1,0 +1,47 @@
+<link rel="shortcut icon" href="favicon.ico" sizes="256x256" />
+<title>My Carlo App</title>
+<style>
+tbody tr td:last-of-type {
+  color: red;
+  cursor: pointer;
+}
+</style>
+<body onload="render()">
+  <input id="add" type="text">
+  <button onclick="add()">Add</button>
+  <table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>TITLE</td>
+        <td>DELETE</td>
+      </tr>
+    </thead>
+    <tbody id="todo"></tbody>
+  </table>
+</body>
+<script>
+async function add() {
+  const val = document.getElementById('add').value;
+  await addPost(val);
+  render();
+}
+
+async function remove(id) {
+  await removePost(id);
+  render();
+}
+
+async function render() {
+  const posts = await getPosts();
+  let trs = '';
+  for (let i = 0; i < posts.length; i++) {
+    trs += `<tr>
+      <td>${posts[i].id}</td>
+      <td>${posts[i].title}</td>
+      <td onclick="remove('${posts[i].id}')">X</td>
+    </tr>`;
+  }
+  document.getElementById('todo').innerHTML = trs;
+}
+</script>
